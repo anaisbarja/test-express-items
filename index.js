@@ -1,9 +1,11 @@
 // 1. Setup
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const app = express();
 
 // Middleware
+app.use(cors());
 app.use(express.json());
 
 // 2. Routes
@@ -11,7 +13,6 @@ app.get("/hello", (req, res) => {
     res.send("hi");
 });
 
-// Import the combined API router (which should contain your /items and /customers)
 const apiRouter = require("./api");
 app.use("/api", apiRouter);
 
